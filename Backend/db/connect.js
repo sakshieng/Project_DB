@@ -27,11 +27,13 @@
 
 
 const mongoose = require(`mongoose`);
-
-mongoose.set("strictQuery",false);
-
-const connectDB = (url)=>{
-    return mongoose.connect(url);
+mongoose.set("strictQuery", false);
+const connectDB = async(url) => {
+    try{
+        return await mongoose.connect(url);
+    }catch(err){
+        return err;
+    }
 }
 
 module.exports = connectDB;
